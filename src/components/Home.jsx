@@ -1,5 +1,11 @@
+import NavBar from './NavBar';
+
 function Home() {
-  return (<h1 className="text-3xl font-bold underline">Home Component</h1>);
+  return (
+    <div className='h-screen w-screen'>
+      <NavBar />
+    </div>
+  );
 }
 
 export default Home;
