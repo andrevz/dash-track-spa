@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Map from './Map';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { firestore } from '../config/firebase';
+import UserList from './UserList';
 
 function Home() {
   const [users, setUsers] = useState([]);
@@ -38,6 +39,14 @@ function Home() {
     } catch (error) {}
   }
 
+  function handleQueryChange(event) {
+    setQuery(event.target.value);
+  }
+
+  function showNewUserModal() {
+    console.log('create dialog');
+  }
+
   function filterUsers() {
     let filtered = [...users];
     if (!query) {
@@ -65,6 +74,11 @@ function Home() {
     <div className='h-screen w-screen'>
       <NavBar handleSignOut={handleSignOut} />
       <section className='flex fixed top-auto h-full w-full'>
+        <UserList 
+          users={filteredUsers} 
+          query={query} 
+          onQueryChange={handleQueryChange} 
+          onCreateClick={showNewUserModal} />
         <Map users={filteredUsers} />
       </section>
     </div>

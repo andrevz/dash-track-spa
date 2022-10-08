@@ -37,7 +37,7 @@ function Map({ users }) {
 
     const markers = [];
     for (const user of users) {
-      if (!user.lat || !user.long) {
+      if (!user.lat || !user.long || !user.onFrequency) {
         continue;
       }
 
