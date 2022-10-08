@@ -39,8 +39,8 @@ function Login() {
   }
 
   return (
-    <section style={{ height: '100vh' }} className='w-full flex items-center justify-center bg-gray-200'>
-      <div className='w-full max-w-md space-y-8'>
+    <section style={{ height: '100vh' }} className='w-full flex items-center justify-center bg-gray-100'>
+      <div className='w-full max-w-[600px] p-5 space-y-8 bg-white shadow sm:rounded-md'>
         <h2 className='text-center text-3xl font-bold tracking-tight text-gray-900'>Dash Delivery</h2>
         <form method='post' onSubmit={handleSubmit} className='mt-8 space-y-6'>
           <div>
@@ -52,7 +52,7 @@ function Login() {
               type='email'
               value={username}
               onChange={handleUsernameChange}
-              className='block w-full py-2 rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+              className='block w-full px-3 py-2 mt-1 rounded-md border-solid border-2 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
               required
             />
           </div>
@@ -65,8 +65,7 @@ function Login() {
               type='password'
               value={password}
               onChange={handlePasswordChange}
-
-              className='block w-full py-2 rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+              className='block w-full px-3 py-2 mt-1 rounded-md border-solid border-2 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
               required
             />
           </div>
