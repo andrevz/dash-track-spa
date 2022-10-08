@@ -1,8 +1,10 @@
 import NavBar from './NavBar';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Map from './Map';
+import { collection, onSnapshot } from 'firebase/firestore';
+import { firestore } from '../config/firebase';
 
 function Home() {
   const [users, setUsers] = useState([]);
@@ -10,6 +12,22 @@ function Home() {
 
   const { logout } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubs = onSnapshot(collection(firestore, 'users'), (snapshot) => {
+      if (!snapshot.empty) {
+        const users = snapshot.docs.map((documentData) => {
+          return { id: documentData.id, ...documentData.data() };
+        });
+
+        setUsers(users);
+      }
+    });
+
+    return () => {
+      if (unsubs) unsubs();
+    };
+  }, []);
 
   async function handleSignOut(e) {
     e.preventDefault();
