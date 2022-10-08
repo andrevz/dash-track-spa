@@ -1,3 +1,9 @@
+/* Map Tooltip */
+.leaflet-tooltip.small-tooltip {
+  padding: 3px;
+  line-height: initial;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
