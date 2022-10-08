@@ -18,6 +18,7 @@ function App() {
           </ProtectedRoute>
         } />
         <Route path='/login' element={<Login />} />
+        <Route path='*' element={<Navigate to='/' />} />
       </Routes>
       <ToastContainer
         position="top-right"
