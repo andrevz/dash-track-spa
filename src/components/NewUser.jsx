@@ -21,7 +21,7 @@ function NewUser({ closeModal, userCreatedHander }) {
       fullName: name,
       onFrequency: false,
       status: 0,
-      bikeNumber
+      bikeNumber: Number(bikeNumber)
     };
 
     let success = false;

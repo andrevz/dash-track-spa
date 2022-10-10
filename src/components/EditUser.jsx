@@ -15,7 +15,7 @@ function EditUser({selectedUser, onClose}) {
       const userRef = doc(firestore, `users/${selectedUser.id}`);
       await updateDoc(userRef, {
         fullName: name,
-        bikeNumber: bikeNumber,
+        bikeNumber: Number(bikeNumber),
         status: busy ? 1 : 0,
         onFrequency: onFrequency
       });
