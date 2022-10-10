@@ -1,14 +1,30 @@
+import { doc, updateDoc } from 'firebase/firestore';
 import { useState } from 'react';
+import { firestore } from '../config/firebase';
 
-function EditUser({selectedUser, onClose, handleUserUpdated}) {
+function EditUser({selectedUser, onClose}) {
   const [name, setName] = useState(selectedUser.fullName);
   const [bikeNumber, setBikeNumber] = useState(selectedUser.bikeNumber);
   const [busy, setBusy] = useState(selectedUser.status === 1);
   const [onFrequency, setOnFrequency] = useState(selectedUser.onFrequency);
   const [loading, setLoading] = useState(false);
 
-  function updateUser() {
-    handleUserUpdated();
+  async function updateUser() {
+    setLoading(true);
+    try {
+      const userRef = doc(firestore, `users/${selectedUser.id}`);
+      await updateDoc(userRef, {
+        fullName: name,
+        bikeNumber: bikeNumber,
+        status: busy ? 1 : 0,
+        onFrequency: onFrequency
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+      onClose();
+    }
   }
 
   return ( 
