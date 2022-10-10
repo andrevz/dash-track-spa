@@ -57,12 +57,13 @@ function Home() {
       filtered = filtered.filter(u => u.bikeNumber.toString().startsWith(query));
     }
 
-    if (query === 'ocu') {
+    const formattedQuery = query.toLowerCase();
+    if (formattedQuery === 'ocu') {
       filtered = filtered.filter(u => u.status === 1 && u.onFrequency);
-    } else if (query === 'lib') {
+    } else if (formattedQuery === 'lib') {
       filtered = filtered.filter(u => u.status === 0 && u.onFrequency);
     } else if (query.length >= 3) {
-      filtered = filtered.filter(u => u.fullName.toLowerCase().includes(query));
+      filtered = filtered.filter(u => u.fullName.toLowerCase().includes(formattedQuery));
     }
 
     return filtered;
