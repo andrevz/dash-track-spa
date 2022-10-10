@@ -1,7 +1,7 @@
 import { AdjustmentsHorizontalIcon, CheckCircleIcon, EllipsisHorizontalCircleIcon, MinusCircleIcon, SignalIcon } from '@heroicons/react/24/outline';
 import { toast } from 'react-toastify';
 
-function UserListItem({ user }) {
+function UserListItem({ user, onUserSelected }) {
   const userStatusIcon = getUserStatusIcon();
 
   function sendNotification(_event) {
@@ -52,7 +52,7 @@ function UserListItem({ user }) {
         <button onClick={sendNotification}>
           <SignalIcon className='h-8 w-8 text-gray-600' />
         </button>
-        <button>
+        <button onClick={() => onUserSelected(user)}>
           <AdjustmentsHorizontalIcon className='h-8 w-8 text-indigo-500' />
         </button>
       </div>

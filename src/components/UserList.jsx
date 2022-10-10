@@ -1,6 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
-import { toast } from 'react-toastify';
 import NewUser from './NewUser';
 import UserListItem from './UserListItem';
 
@@ -16,12 +15,13 @@ function UserList({ users, query, onQueryChange }) {
   }
 
   function userCreatedHandler(success) {
-    closeModal();
     if (success) {
-      toast.success('El usuario fue creado');
-    } else {
-      toast.error('Error al crear el usuario');
+      closeModal();
     }
+  }
+
+  function userSelectedHandler(selectedUser) {
+    console.log(selectedUser);
   }
 
   function sortUsers() {
@@ -36,7 +36,7 @@ function UserList({ users, query, onQueryChange }) {
   }
 
   const sortedUsers = sortUsers();
-  const userCards = sortedUsers.map((user) => <UserListItem key={user.id} user={user} />);
+  const userCards = sortedUsers.map((user) => <UserListItem key={user.id} user={user} onUserSelected={userSelectedHandler} />);
 
   return (
     <>
