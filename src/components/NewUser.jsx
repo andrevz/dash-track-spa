@@ -54,7 +54,7 @@ function NewUser({ closeModal, userCreatedHander }) {
   }
 
   return (
-    <form className='space-y-6 px-4 pb-2'>
+    <section className='space-y-6 px-4 pb-2'>
       <div>
         <label htmlFor='email' className='block text-md font-medium text-gray-700'>
           Correo
@@ -125,7 +125,7 @@ function NewUser({ closeModal, userCreatedHander }) {
             : <span>Crear</span>}
         </button>
       </div>
-    </form>
+    </section>
   );
 }
 
