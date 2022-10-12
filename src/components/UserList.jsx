@@ -72,7 +72,7 @@ function UserList({ users, query, onQueryChange }) {
             Nuevo
           </button>
         </div>
-        <div className='px-5 space-y-3 h-[calc(100vh-142px)] overflow-y-auto'>{userCards}</div>
+        <div className='px-5 pb-5 space-y-3 h-[calc(100vh-142px)] overflow-y-auto'>{userCards}</div>
       </div>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
