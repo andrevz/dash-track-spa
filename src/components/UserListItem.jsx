@@ -10,7 +10,8 @@ function UserListItem({ user, onUserSelected }) {
         title: "Dash Delivery",
         body: "Comunícate con la central."
       },
-      to: user.token ?? ''
+      to: user.token ?? '',
+      priority: 'high'
     }
 
     const response = fetch('https://fcm.googleapis.com/fcm/send', {
